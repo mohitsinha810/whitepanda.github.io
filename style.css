@@ -1,0 +1,26 @@
+.icon{
+	color: white;
+	font-size: 160%;
+	float: right;
+}
+body{
+	background-color: #F8F8F8;
+}
+.btn-icon{
+	background-color: white;
+	border-radius: 75%;
+	font-size: 160%;
+}
+.btn-icon-block{
+	margin-left: 15px;
+	background-color: white;
+	font-size: 160%;
+}
+.card{
+	border: none;
+	background-color: white;
+	padding: 10px;
+}
+.card:hover{
+	box-shadow: 6px 6px 4px 6px #DDDDDD;
+}

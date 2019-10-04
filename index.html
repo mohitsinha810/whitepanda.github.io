@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>White Panda</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="shortcut icon" href="top_logo.jpg" type="image/x-icon" /> 
+	<link rel="stylesheet" href="style.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<body>
+
+	<nav class="navbar navbar-dark bg-primary justify-content-between">
+		<div class="container">
+  			<a href="#">
+  				<img src="logo.png" alt="logo">
+  			</a>
+  			<!-- <i class="fa fa-bell icon" style="float: right;"></i> -->
+  			<div>
+	  			<button type="button" class="btn-icon text-primary">NJ</button>
+	  			<button class="btn-icon-block text-primary" id="cart" data-toggle="modal" data-target="#exampleModal">Cart</button>
+	  		</div>
+  		</div>
+	</nav>
+	<br><br>
+
+	<div class="container">
+		<h1>Content Store</h1>
+		<br>
+		<h4 class="text-info">Got bulk orders or almost similar orders? Fill the order brief in an excel sheet.
+		</h4>
+		<p>
+			If you are wondering for an easy way to place orders, we provide one for you. Download our excel sheet and fill the order brief in the prescribed format and submit. In case you need help, we are just a click away.
+		</p>
+		<form method="get" action="resources/order.xlsx">
+			<button type="submit" class="btn btn-outline-info">Download Excel Sheet</button>
+		</form>
+	</div>
+	<br><br><br><br>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<div class="card" style="width: 18rem;">
+				  <div class="card-body">
+				    <h5 class="card-title text-info">Whitepanda E-book</h5>
+				    <h6 class="card-subtitle mb-2 text-muted">Price : $25</h6>
+				    <br>
+				    <p class="card-text">An e-book can read on an ebook reader.</p>
+				    <button class="btn btn-outline-info addToCart" id="1">Add to Cart</button>
+				  </div>
+				</div>
+			</div>
+			<div class="col">
+				<div class="card" style="width: 18rem;">
+				  <div class="card-body">
+				    <h5 class="card-title text-info">Whitepanda Sticker</h5>
+				    <h6 class="card-subtitle mb-2 text-muted">Price : $10</h6>
+				    <br>
+				    <p class="card-text">A cool pack of stickers which you can apply on your laptop.</p>
+				    <button class="btn btn-outline-info addToCart" id="2">Add to Cart</button>
+				  </div>
+				</div>
+			</div>
+			<div class="col">
+				<div class="card" style="width: 18rem;">
+				  <div class="card-body">
+				    <h5 class="card-title text-info">Whitepanda Candy</h5>
+				    <h6 class="card-subtitle mb-2 text-muted">Price : $2</h6>
+				    <br>
+				    <p class="card-text">Sweet candy that melts in your mouth.</p>
+				    <button class="btn btn-outline-info addToCart" id="3">Add to Cart</button>
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br><br><br><br>
+	<hr>
+	<br><br>
+	<div class="container" style="color: #A5A5A5;">
+		<p class="text-center">Copyright @ 2019 White Panda Media Private Limited</p>
+		<p class="text-center">All rights reserved</p>
+		<p class="text-center">Privacy Policy  |  Terms of Service  |  Service Agreement</p>
+	</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cart</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      	<br>
+        <table class="table table-striped" id="table">
+        	<tr>
+        		<th>Item Name</th>
+        		<th>Price</th>
+        		<th>Quantity</th>
+        	</tr>
+        </table>
+        <br>
+        <p style="float: right; margin-right: 15px;">Total: <span id="total">$ 0</span></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</body>
+
+
+
+<script>
+	let productPrice = [25,10,2];
+	let productName = ['Whitepanda E-book', 'Whitepanda Sticker', 'Whitepanda Candy'];
+	let total = 0;
+	$(document).ready(function(){
+	  $('.addToCart').click(function(){
+	  		let index = $(this).attr('id');
+	  		$(this).removeClass('btn-outline-info');
+	  		$(this).addClass('btn-outline-success');
+	  		$(this).html('Item Added <i class="fa fa-check"></i>');
+	  		$(this).removeAttr('id');
+	  		$('#table tr:last').after('<tr><td>'+ productName[index-1] +'</td><td>'+ productPrice[index-1] +'</td><td>1</td></tr>');
+	  		total += productPrice[index-1];
+	  		$('#total').text('$ ' + total);
+	  });
+	});
+</script>
+
+</html>
